@@ -2,8 +2,8 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Jaylin Auger-LaFleur`
+- **CCID:** `augerlaf`
 
 ## References and Resources
 
