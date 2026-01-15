@@ -3,6 +3,7 @@ package com.example.listycity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,9 +19,12 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     ListView cityList;
+
+    Button addButton, deleteButton; // declare button variables
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
 
+    int selectedIndex = -1; // tp keep track of city
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cityList = findViewById(R.id.city_list);
+        addButton = findViewById(R.id.button_add);
+        deleteButton = findViewById(R.id.button_del);
 
         String []cities = {"Edmonton", "Vancouver", "moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing","Osaka", "New Delhi"};
 
@@ -38,16 +44,30 @@ public class MainActivity extends AppCompatActivity {
 
         cityAdapter = new ArrayAdapter<>(this, R.layout.content, dataList); // this references the current activity
         cityList.setAdapter(cityAdapter);
-/*
-        View button = findViewById(R.id.button_add);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+            selectedIndex = position;// city to delete
+            Toast.makeText(MainActivity.this, "City: " + dataList.get(position), Toast.LENGTH_SHORT).show();
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 dataList.add("New City");// change to put whatever is in edit text view
+                 cityAdapter.notifyDataSetChanged();
+             }
+         });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Button Clicked", Toast.LENGTH_SHORT).show();
-                dataList.add("New City");// change to put whatever is in edit text view
-                cityAdapter.notifyDataSetChanged();
+                    if (selectedIndex == -1) {
+                        Toast.makeText(MainActivity.this, "Tap a city first", Toast.LENGTH_SHORT).show();
+                    return;}
+                    String removed = dataList.remove(selectedIndex);
+                    cityAdapter.notifyDataSetChanged();
             }
         });
-*/
+
     }
 }
