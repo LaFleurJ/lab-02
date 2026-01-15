@@ -15,6 +15,9 @@ https://www.tutorialspoint.com/how-to-programmatically-add-buttons-into-a-layout
 Figuring out how to adjust list of cities (remove, add, notify change/refresh view):
 https://developer.android.com/reference/android/widget/ArrayAdapter
 
+Looking at how to get input text from user to add to city list: 
+https://developer.android.com/reference/android/widget/EditText
+
 ## Verbal Collaboration
 
 | Student Name | CCID      |
