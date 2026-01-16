@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
 
+    EditText editCity;
     int selectedIndex = -1; // tp keep track of city
 
     @Override
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         cityList = findViewById(R.id.city_list);
         addButton = findViewById(R.id.button_add);
         deleteButton = findViewById(R.id.button_del);
+        editCity = findViewById(R.id.add_city);
 
         String []cities = {"Edmonton", "Vancouver", "moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing","Osaka", "New Delhi"};
 
@@ -55,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
              @Override
              public void onClick(View v) {
                  //dataList.add("New City");// change to put whatever is in edit text view
-                 EditText input = new EditText(MainActivity.this);
-                 String newCity = input.getText().toString();
+                 String newCity = editCity.getText().toString();
                  dataList.add(newCity);
                  cityAdapter.notifyDataSetChanged();
+                 editCity.setText("");
              }
          });
 
