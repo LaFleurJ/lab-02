@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -53,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 dataList.add("New City");// change to put whatever is in edit text view
+                 //dataList.add("New City");// change to put whatever is in edit text view
+                 EditText input = new EditText(MainActivity.this);
+                 String newCity = input.getText().toString();
+                 dataList.add(newCity);
                  cityAdapter.notifyDataSetChanged();
              }
          });
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     if (selectedIndex == -1) {
-                        Toast.makeText(MainActivity.this, "Tap a city first", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Tap a city first", Toast.LENGTH_SHORT).show(); // learned from lab demo
                     return;}
                     String removed = dataList.remove(selectedIndex);
                     cityAdapter.notifyDataSetChanged();
