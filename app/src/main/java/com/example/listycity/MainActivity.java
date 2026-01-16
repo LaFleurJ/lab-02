@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                  editCity.setVisibility(View.VISIBLE);
                  confirmButton.setVisibility(View.VISIBLE);
                  addButton.setVisibility(View.GONE);
+                 deleteButton.setVisibility(View.GONE);
+                 editCity.requestFocus();
 
                  //dataList.add("New City");// change to put whatever is in edit text view
                  //
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 editCity.setVisibility(View.GONE);
                 confirmButton.setVisibility(View.GONE);
                 addButton.setVisibility(View.VISIBLE);
+                deleteButton.setVisibility(View.VISIBLE);
+
             }
         });
 
