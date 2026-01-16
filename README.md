@@ -17,6 +17,8 @@ https://developer.android.com/reference/android/widget/ArrayAdapter
 
 Looking at how to get input text from user to add to city list: 
 https://developer.android.com/reference/android/widget/EditText
+and
+https://developer.android.com/develop/ui/views/components/dialogs#:~:text=in%20a%20dialog.-,The%20AlertDialog.,create();
 
 ## Verbal Collaboration
 
