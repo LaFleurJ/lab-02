@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView cityList;
 
-    Button addButton, deleteButton; // declare button variables
+    Button addButton, deleteButton, confirmButton; // declare button variables
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
 
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         cityList = findViewById(R.id.city_list);
         addButton = findViewById(R.id.button_add);
         deleteButton = findViewById(R.id.button_del);
+        confirmButton = findViewById(R.id.button_confirm);
         editCity = findViewById(R.id.add_city);
 
         String []cities = {"Edmonton", "Vancouver", "moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing","Osaka", "New Delhi"};
@@ -56,13 +57,28 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 editCity.setVisibility(View.VISIBLE);
+                 confirmButton.setVisibility(View.VISIBLE);
+                 addButton.setVisibility(View.GONE);
+
                  //dataList.add("New City");// change to put whatever is in edit text view
-                 String newCity = editCity.getText().toString();
-                 dataList.add(newCity);
-                 cityAdapter.notifyDataSetChanged();
-                 editCity.setText("");
+                 //
+
              }
          });
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newCity = editCity.getText().toString();
+                dataList.add(newCity);
+                cityAdapter.notifyDataSetChanged();
+                editCity.setText("");
+
+                editCity.setVisibility(View.GONE);
+                confirmButton.setVisibility(View.GONE);
+                addButton.setVisibility(View.VISIBLE);
+            }
+        });
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
